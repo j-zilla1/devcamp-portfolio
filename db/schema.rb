@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708193241) do
+ActiveRecord::Schema.define(version: 20170724020421) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "topic_id"
+    t.index ["topic_id"], name: "index_blogs_on_topic_id"
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -33,6 +35,12 @@ ActiveRecord::Schema.define(version: 20170708193241) do
     t.integer  "percent_utilized"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
